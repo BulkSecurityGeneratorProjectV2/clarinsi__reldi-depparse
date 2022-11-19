@@ -2,6 +2,7 @@ package is2.lemmatizer;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import is2.util.OptionsSuper;
 
@@ -38,8 +39,8 @@ public final class Options extends OptionsSuper {
 		if (trainfile!=null) {
 			
 			
-			if (tmp!=null) trainforest = File.createTempFile("train", ".tmp", new File(tmp));
-			else trainforest = File.createTempFile("train", ".tmp"); //,new File("F:\\")
+			if (tmp!=null) trainforest = Files.createTempFile(new File(tmp).toPath(),"train",".tmp").toFile();
+			else trainforest = Files.createTempFile("train",".tmp").toFile(); //,new File("F:\\")
 			trainforest.deleteOnExit();
 		}
 

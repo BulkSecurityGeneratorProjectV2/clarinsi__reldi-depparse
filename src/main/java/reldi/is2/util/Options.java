@@ -3,6 +3,7 @@ package is2.util;
 import is2.util.OptionsSuper;
 
 import java.io.File;
+import java.nio.file.Files;
 
 
 public final class Options extends OptionsSuper {
@@ -87,11 +88,11 @@ public final class Options extends OptionsSuper {
 					
 				} else 
 				if (tmp!=null) {
-					trainforest = File.createTempFile("train", ".tmp", new File(tmp));
+					trainforest = Files.createTempFile(new File(tmp).toPath(),"train",".tmp").toFile();
 					trainforest.deleteOnExit();
 				}
 				else {
-					trainforest = File.createTempFile("train", ".tmp"); //,new File("F:\\")
+					trainforest = Files.createTempFile("train",".tmp").toFile(); //,new File("F:\\")
 					trainforest.deleteOnExit();
 				}
 				
